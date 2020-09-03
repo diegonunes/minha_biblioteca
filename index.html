@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Biblioteca - Tarefa Back-end</title>
+  </head>
+  <body>
+    <img src="images/logo.png" alt="logo" height="80" width="80" />
+    <h1>Minha biblioteca</h1>
+    <h2>Meus livros</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Ano</th>
+          <th>Edição</th>
+          <th>Editora</th>
+          <th>Páginas</th>
+        </tr>
+      </thead>
+    </table>
+
+    <table id="livros"></table>
+
+    <form>
+      <label for="titulo">Título</label>
+      <input type="text" name="titulo" required />
+      <br />
+      <label for="autor">Autor</label>
+      <select name="autor">
+        <option value="">Nome do autor</option>
+      </select>
+      <button>Adicionar novo autor</button>
+      <input type="text" />
+      <button>+</button>
+      <br />
+      <label for="ano">Ano</label>
+      <input type="number" name="ano" min="1980" max="2020" required />
+      <br />
+      <label for="edicao">Edição</label>
+      <input type="number" name="edicao" required />
+      <br />
+      <label for="editora">Editora</label>
+      <input type="text" name="editora" required />
+      <br />
+      <label for="paginas">Páginas</label>
+      <input type="number" name="paginas" min="1" max="9999" required />
+      <br />
+      <input type="submit" value="Inserir livro" />
+    </form>
+  </body>
+</html>
