@@ -4,24 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minha Biblioteca - Tarefa Back-end</title>
+    <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="inicializa()">
     <img src="images/logo.png" alt="logo" height="80" width="80" />
     <h1>Minha biblioteca</h1>
     <h2>Meus livros</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Título</th>
-          <th>Autor</th>
-          <th>Ano</th>
-          <th>Edição</th>
-          <th>Editora</th>
-          <th>Páginas</th>
-        </tr>
-      </thead>
-    </table>
-
     <table id="livros"></table>
 
     <form>
@@ -29,9 +17,7 @@
       <input type="text" name="titulo" required />
       <br />
       <label for="autor">Autor</label>
-      <select name="autor">
-        <option value="">Nome do autor</option>
-      </select>
+      <select id="listaAutores" name="autor"></select>
       <button>Adicionar novo autor</button>
       <input type="text" />
       <button>+</button>
