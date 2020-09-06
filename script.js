@@ -37,3 +37,34 @@ function inicializaSelecaoAutores(lisAutores) {
 function listaLivros(lisLivros) {
   document.getElementById('livros').innerHTML = lisLivros;
 }
+
+function toggleAutor() {
+  let autorInput = document.getElementById('autorNome');
+  let addButton = document.getElementById('insereAutor');
+  if (autorInput.style.display === 'none') {
+    autorInput.style.display = 'inline';
+    addButton.style.display = 'inline';
+  } else {
+    autorInput.style.display = 'none';
+    addButton.style.display = 'none';
+  }
+}
+
+function insereLivro() {
+  let titulo = document.getElementById('titulo').value;
+  let ano = document.getElementById('ano').value;
+  let edicao = document.getElementById('edicao').value;
+  let editora = document.getElementById('editora').value;
+  let paginas = document.getElementById('paginas').value;
+  let listaAutores = document.getElementById('listaAutores').value;
+
+  document.getElementById('titulo').value = '';
+  document.getElementById('ano').value = '';
+  document.getElementById('edicao').value = '';
+  document.getElementById('editora').value = '';
+  document.getElementById('paginas').value = '';
+  document.getElementById('listaAutores').value = 0;
+
+  params = `&titulo=${titulo}&autor=${listaAutores}&ano=${ano}&edicao=${edicao}&editora=${editora}&paginas=${paginas}`;
+  ajaxCall('livros.php?action=insLivro' + params, listaLivros);
+}

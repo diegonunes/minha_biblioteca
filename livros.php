@@ -13,6 +13,7 @@ function mostraTabela($qtdeColunas, $consulta, $func) {
   $tab .= "<th>Edição</th>";
   $tab .= "<th>Editora</th>";
   $tab .= "<th>Páginas</th>";
+  $tab .= "<th></th>";
   $tab .= "</tr>";
   $tab .= "</thead>";
 
@@ -30,7 +31,7 @@ function mostraTabela($qtdeColunas, $consulta, $func) {
 }
 
 function mostraLivros($db) {
-  $result = $db->query("SELECT livros.titulo,autores.nome,livros.ano,livros.edicao,livros.editora,livros.paginas FROM livros,autores WHERE livros.autor_id = autores.id");
+  $result = $db->query("SELECT livros.titulo,autores.nome,livros.ano,livros.edicao,livros.editora,livros.paginas,livros.id FROM livros,autores WHERE livros.autor_id = autores.id");
   mostraTabela(6, $result, 'Livro');
 }
 
@@ -46,11 +47,24 @@ function recuperaTabela($tabela, $db) {
   echo json_encode($retData);
 }
 
-if(@$_REQUEST['action'] == 'recuperaAutores') {
+if(@$_REQUEST['action'] == "recuperaAutores") {
   recuperaTabela('autores', $db);
 }
 
-if(@$_REQUEST['action'] == 'mostraLivros') {
+if(@$_REQUEST['action'] == "mostraLivros") {
+  mostraLivros($db);
+}
+
+if(@$_REQUEST['action'] == "insLivro") {
+  $titulo = $_REQUEST['titulo'];
+  $autorId = intval($_REQUEST['autor']);
+  $ano = intval($_REQUEST['ano']);
+  $edicao = intval($_REQUEST['edicao']);
+  $editora = $_REQUEST['editora'];
+  $paginas = intval($_REQUEST['paginas']);
+
+  $stm = $db->prepare("INSERT INTO livros (titulo,autor_id,ano,edicao,editora,paginas) VALUES ('$titulo','$autorId','$ano','$edicao','$editora',$paginas);");
+  $stm->execute();
   mostraLivros($db);
 }
 
