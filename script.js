@@ -68,3 +68,16 @@ function insereLivro() {
   params = `&titulo=${titulo}&autor=${listaAutores}&ano=${ano}&edicao=${edicao}&editora=${editora}&paginas=${paginas}`;
   ajaxCall('livros.php?action=insLivro' + params, listaLivros);
 }
+
+function insereNovoAutor() {
+  let nome = document.getElementById('autorNome').value;
+
+  document.getElementById('autorNome').value = '';
+
+  params = `&autorNome=${nome}`;
+  ajaxCall('livros.php?action=insAutor' + params, listaLivros);
+}
+
+function deletaLivro(codLivro) {
+  ajaxCall('livros.php?action=delLivro&id=' + codLivro, listaLivros);
+}

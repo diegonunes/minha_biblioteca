@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minha Biblioteca - Tarefa Back-end</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body onload="inicializa()">
     <img src="images/logo.png" alt="logo" height="80" width="80" />
@@ -23,7 +23,7 @@
         style="display: none"
         placeholder="Digite aqui um novo autor"
       />
-      <button type="button" id="insereAutor" style="display: none" onclick="insereAutor()">+</button>
+      <button type="button" id="insereAutor" style="display: none" onclick="insereNovoAutor()">+</button>
       <br />
       <label for="titulo">Título</label>
       <input type="text" id="titulo" name="titulo" required />

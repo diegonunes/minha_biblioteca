@@ -68,4 +68,18 @@ if(@$_REQUEST['action'] == "insLivro") {
   mostraLivros($db);
 }
 
+if(@$_REQUEST['action'] == "insAutor") {
+  $autorNome = $_REQUEST['autorNome'];
+
+  $stm = $db->prepare("INSERT INTO autores (nome) values ('$autorNome');");
+  $stm->execute();
+  echo("<meta http-equiv='refresh' content='1'>");
+}
+
+if(@$_REQUEST['action'] == "delLivro") {
+  $stm = $db->prepare("DELETE FROM livros WHERE livros.id = ".$_REQUEST['id']);
+  $stm->execute();
+  mostraLivros($db);
+}
+
 ?>
